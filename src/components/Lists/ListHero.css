@@ -1,0 +1,72 @@
+.list-layout section {
+  width: 20%;
+  padding: 0.5em;
+  box-sizing: border-box;
+}
+
+.list-layout section figure{
+  width:100%;
+  overflow:hidden;
+  height: 10em;
+  padding: 0;
+  margin: 0;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.list-layout section figure img {
+  display:block;
+  width:100%;
+  margin-top: -5em;
+}
+
+.list-layout section div.info {
+  border: 1px solid rgba(0,0,0,0.5);
+  border-top: 0;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+
+.list-layout section div.info div.name {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.list-layout section div.info div.description.primary {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.list-layout section div.info div.description.primary div{
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+}
+
+
+
+.list-layout section div.info div.description {
+  display: flex;
+}
+
+
+.list-layout section div.info div.description div {
+  flex: 1;
+  padding: 1em;
+  text-align: center;
+}
+
+
+.list-layout section div.info div.name, .list-layout section figure, .list-layout section div.info div.description.primary {
+  cursor: pointer;
+}
+
+.list-layout section div.info div.description.primary .good {
+  color: green;
+}
+
+.list-layout section div.info div.description.primary .bad {
+  color: red;
+}
