@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, lazy, Fragment } from 'react';
 import { Store } from '../reducers';
-import { getHeros } from '../actions/heros.action';
+import { getHeros, selectPlayer } from '../actions/heros.action';
 
 const HeroList = lazy(() => import('../components/Lists/HeroList'));
 
@@ -12,6 +12,10 @@ export default function HomePage() {
     getHeros(dispatch)
   }
 
+  const setHeros = (id) => {
+    selectPlayer(dispatch, id)
+  }
+
   useEffect(() => {
     state.heros.list.length === 0 && loadHeros();
   });
@@ -19,9 +23,14 @@ export default function HomePage() {
   return (
     <Fragment>
       <div>
-        AGREGAR 
+        AGREGAR
       </div>
-      <HeroList heros={state.heros.list} />
+      <HeroList
+        heros={state.heros.list}
+        player1={state.heros.player1}
+        player2={state.heros.player2}
+        selectPlayer={setHeros}
+      />
     </Fragment>
   );
 }

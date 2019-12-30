@@ -3,3 +3,21 @@
   flex-wrap: wrap;
   min-width: 100vh;
 }
+
+.listInfo {
+  border:  1px solid red;
+  border-radius: 1em;
+  text-align: center;
+  font-size: 2em;
+}
+
+.listInfo.not-ready {
+  background: lightgray;
+  cursor: not-allowed;
+}
+
+.listInfo.ready {
+  background: green;
+  cursor: pointer;
+  border: 1px solid darkgreen;
+}

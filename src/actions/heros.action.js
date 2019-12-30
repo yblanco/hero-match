@@ -6,6 +6,10 @@ import heroRest from '../apis/heros.api'
 export const getHeros = (dispatch) => {
   Promise.all(heros.map(id => heroRest.byId(id)))
     .then(herosInfo => {
-      dispatch(dispatchAction(herosAction.fetch, herosInfo ))
+      dispatch(dispatchAction(herosAction.fetch, herosInfo))
     });
+}
+
+export const selectPlayer = (dispatch, id) => {
+  return dispatch(dispatchAction(herosAction.set_player, id))
 }

@@ -2,6 +2,15 @@
   width: 20%;
   padding: 0.5em;
   box-sizing: border-box;
+  user-select: none;
+}
+
+.list-layout section.first-true div.info  {
+  background: cyan;
+}
+
+.list-layout section.second-true div.info  {
+  background: hotpink;
 }
 
 .list-layout section figure{
@@ -59,8 +68,11 @@
 }
 
 
-.list-layout section div.info div.name, .list-layout section figure, .list-layout section div.info div.description.primary {
+.list-layout section div.info div.name, .list-layout section figure {
   cursor: pointer;
+}
+.list-layout section div.info div.description.primary div, .list-layout section div.info div.description.power div {
+  cursor: help;
 }
 
 .list-layout section div.info div.description.primary .good {

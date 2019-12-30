@@ -1,5 +1,6 @@
 export const herosAction = {
-  fetch: 'heros_fetch'
+  fetch: 'heros_fetch',
+  set_player: 'heros_set_player',
 }
 
 export const fightAction = {

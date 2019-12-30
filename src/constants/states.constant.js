@@ -1,5 +1,7 @@
 export const heros = {
-  list: []
+  list: [],
+  player1: 0,
+  player2: 0,
 };
 
 export const fight = {
