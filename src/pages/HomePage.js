@@ -26,9 +26,6 @@ export default function HomePage() {
 
   return (
     <Fragment>
-      <div>
-        AGREGAR
-      </div>
       <HeroList
         heros={state.heros.list}
         player1={state.heros.player1}
