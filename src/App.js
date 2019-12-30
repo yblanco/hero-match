@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useContext } from 'react';
+import React, { Fragment, Suspense } from 'react';
 
 import Routes from './routes'
 

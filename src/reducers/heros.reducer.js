@@ -2,8 +2,8 @@ import { herosAction } from '../constants/action.constant';
 import { heros } from '../constants/states.constant';
 
 export default (state = heros, action = {}) => {
-  let player1;
-  let player2;
+  let player1 = 0;
+  let player2 = 0;
   let player;
   switch (action.type) {
     case herosAction.fetch:
@@ -22,6 +22,8 @@ export default (state = heros, action = {}) => {
       } else if(player1 === 0 && player2 > 0) {
         player1 = player;
       }
+      return { ...state, player1, player2 }
+    case herosAction.clear_player:
       return { ...state, player1, player2 }
     default:
       return state;

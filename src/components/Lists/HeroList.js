@@ -4,7 +4,7 @@ import './List.css';
 import './ListHero.css';
 
 
-export default ({ heros, player1, player2, selectPlayer }) => (
+export default ({ heros, player1, player2, selectPlayer, fight, last }) => (
   <div style={{ borderTop: "1px solid grey"}}>
     <div style={{ textAlign: "right"}}>
       Total heros: {heros.length}
@@ -16,8 +16,30 @@ export default ({ heros, player1, player2, selectPlayer }) => (
         : `Select players`
       }
     </div>
-    <div  style={{ textAlign: "right"}}>
-      <button style={{ padding: "1em", width: "25%", margin:"1em"}} disabled={player1===0 || player2===0}>Fight</button>
+    <div style={{ textAlign: "right"}}>
+      {
+        last !== null
+          && (
+            <div style={{ textAlign: "center"}}>
+              <u>Last Fight</u>
+              <br/>
+              <i>{last.first.name} vs {last.second.name}</i>
+              <br/>
+              {
+                last.winner !== 0
+                  && <strong>{ last.winner === 1 ? last.first.name : last.second.name }</strong>
+              }
+              { last.winner === 0 && "Tie"}
+            </div>
+          )
+      }
+      <button
+        style={{ padding: "1em", width: "25%", margin:"1em"}}
+        disabled={player1===0 || player2===0}
+        onClick={() => { player1 > 0 && player2 > 0 && fight() }}
+      >
+        Fight
+      </button>
     </div>
     <div className='list-layout'>
       {

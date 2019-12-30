@@ -6,6 +6,7 @@ export const heros = {
 
 export const fight = {
   list: [],
+  last: null,
 }
 
 export default {
