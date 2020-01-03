@@ -29,6 +29,13 @@
 
 .searcher-suggest-item {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.searcher-suggest-item figure img {
+  height: 2em;
 }
 
 .searcher-suggest-item:hover {
