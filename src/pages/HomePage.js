@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, lazy, Fragment } from 'react';
 import { Store } from '../reducers';
-import { getHeros, selectPlayer, fight } from '../actions/heros.action';
+import { getHeros, selectPlayer, fight, search, add } from '../actions/heros.action';
 
 const HeroList = lazy(() => import('../components/Lists/HeroList'));
+const Searcher = lazy(() => import('../components/Searchs/Searcher'));
+
 
 export default function HomePage() {
   const { state, dispatch } = useContext(Store);
@@ -20,12 +22,26 @@ export default function HomePage() {
     fight(dispatch, state);
   }
 
+  const changeSearch = (value) => {
+    search(dispatch, value);
+  }
+
+  const selectSearch = (id) => {
+    add(dispatch, id)
+  }
+
   useEffect(() => {
     state.heros.list.length === 0 && loadHeros();
   });
 
   return (
     <Fragment>
+      <Searcher
+        suggest
+        suggested={state.heros.search}
+        onChange={changeSearch}
+        onSelect={selectSearch}
+      />
       <HeroList
         heros={state.heros.list}
         player1={state.heros.player1}

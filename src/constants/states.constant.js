@@ -1,5 +1,6 @@
 export const heros = {
   list: [],
+  search: [],
   player1: 0,
   player2: 0,
 };

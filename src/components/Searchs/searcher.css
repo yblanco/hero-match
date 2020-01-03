@@ -1,0 +1,36 @@
+.searcher-content {
+  margin: 1em auto;
+  display: flex;
+  align-items: center;
+}
+
+.searcher-title {
+  width: 20%;
+  text-align: center;
+}
+
+.searcher-content input {
+  width: 80%;
+}
+
+.searcher-suggest {
+  border:1px solid grey;
+  border-top: none;
+  margin:0;
+  min-width: 78.5%;
+  min-height: 2em;
+  position: absolute;
+  background: white;
+  margin-top: -1em;
+  right: 1.5ex;
+  max-height: 10em;
+  overflow-y: scroll;
+}
+
+.searcher-suggest-item {
+  cursor: pointer;
+}
+
+.searcher-suggest-item:hover {
+  background: grey;
+}

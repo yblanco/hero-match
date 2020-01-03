@@ -23,3 +23,23 @@ export const fight = (dispatch, state) => {
   fightExecu(dispatch, player1Get, player2Get);
   dispatch(dispatchAction(herosAction.clear_player));
 }
+
+export const search = (dispatch, name) => {
+  if(name.length > 0){
+    heroRest.byName(name)
+      .then(herosList => {
+        const { results = [] } = herosList
+        if(results.length> 0) {
+          dispatch(dispatchAction(herosAction.search_hero, results));
+        }
+      })
+  }
+}
+
+export const add = (dispatch, id) => {
+  dispatch(dispatchAction(herosAction.clear_search));
+  heroRest.byId(id)
+    .then(heroInfo => {
+      dispatch(dispatchAction(herosAction.add, heroInfo))
+    })
+}
