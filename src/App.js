@@ -1,31 +1,29 @@
-import React, { Fragment, Suspense,useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Suspense, lazy, useContext } from 'react';
+
+import { Grommet, Box } from 'grommet';
 
 import { Store } from './reducers';
-import Routes from './routes'
+
+import Header from './components/Commons/Header';
+import Spinning from './components/Commons/Spinning';
+
+import theme from './constants/theme.constant'
+
+const Routes = lazy(() => import('./routes'));
+
 
 export default function App() {
   const { state } = useContext(Store);
   return (
-    <Fragment>
-      <header className='header'>
-        <div>
-          <h1>Heros Match</h1>
-          <p>Face your favorite heroes</p>
-        </div>
-        <div>
-        <Link to='/'>
-          Heros ({state.heros.list.length})
-        </Link>
-        {' | '}
-        <Link to='/fight'>
-          Fights ({state.fight.list.length})
-        </Link>
-        </div>
-      </header>
-      <Suspense fallback={<div style={{ textAlign: "center" }}>Loading...</div>}>
-        <Routes />
-      </Suspense>
-    </Fragment>
+    <Grommet theme={theme} full>
+      <Header heros={state.heros.list.length} fights={state.fight.list.length}  />
+      <Box fill>
+        <Box>
+          <Suspense fallback={<Spinning />}>
+            <Routes />
+          </Suspense>
+        </Box>
+      </Box>
+    </Grommet>
   );
 }

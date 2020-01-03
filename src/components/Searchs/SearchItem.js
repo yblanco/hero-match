@@ -1,20 +1,22 @@
 import React from 'react'
+import { Image, Box, Text } from 'grommet';
 
-import './searcher.css';
-
-export default ({ items= [], onClick=()=>{} }) => (
-  <div className="searcher-suggest">
-    {
-      items.length > 0
-      ? items.map(item =>(
-        <div className="searcher-suggest-item" onClick={() => onClick(item.id)} key={item.id}>
-          <figure>
-            <img src={item.image.url} alt={item.name} />
-          </figure>
-          <div>{item.name}</div>
-        </div>
-      ))
-      : "Character with given name not found"
-    }
-  </div>
+export default ({ item, bottom }) => (
+  <Box
+    direction="row"
+    align="center"
+    gap="small"
+    border={bottom}
+    pad="small"
+  >
+    <Image
+      width="30em"
+      height="30em"
+      src={item.image.url}
+      style={{ borderRadius: "100%" }}
+    />
+    <Text>
+      <strong>{item.name}</strong>
+    </Text>
+  </Box>
 );

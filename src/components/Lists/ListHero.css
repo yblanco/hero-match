@@ -1,4 +1,4 @@
-.list-layout section {
+/* .list-layout section {
   width: 20%;
   padding: 0.5em;
   box-sizing: border-box;
@@ -50,7 +50,7 @@
 }
 .list-layout section div.info div.description.primary div{
   overflow: hidden;
-  white-space: nowrap; /* Don't forget this one */
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 
@@ -81,4 +81,4 @@
 
 .list-layout section div.info div.description.primary .bad {
   color: red;
-}
+} */
