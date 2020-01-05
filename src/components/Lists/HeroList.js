@@ -24,7 +24,7 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
       <Button
         primary
         onClick={goFight}
-        label={label+" "+size}
+        label={label}
         disabled={disabled}
       >
       </Button>
