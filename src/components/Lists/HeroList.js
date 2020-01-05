@@ -1,5 +1,5 @@
-import React from 'react'
-import { Box, Grid, Button, Text } from 'grommet';
+import React, { useContext } from 'react'
+import { Box, Grid, Button, Text, ResponsiveContext } from 'grommet';
 
 import HeroItem from './HeroItem';
 
@@ -8,6 +8,7 @@ import './ListHero.css';
 
 
 export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
+  const size = useContext(ResponsiveContext);
   const p1 = heros.find(i => i.id === player1);
   const p2 = heros.find(i => i.id === player2);
   let goFight = () => {};
@@ -23,14 +24,14 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
       <Button
         primary
         onClick={goFight}
-        label={label}
+        label={label+" "+size}
         disabled={disabled}
       >
       </Button>
       <Grid
         margin="small"
         columns={{
-          count: 5,
+          count: size === "small" ? 2 : 5,
           size: "auto"
         }}
         gap="small"
