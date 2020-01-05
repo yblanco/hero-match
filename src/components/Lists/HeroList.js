@@ -1,29 +1,21 @@
 import React, { useContext } from 'react'
-import { Box, Grid, Button, Text, ResponsiveContext } from 'grommet';
+import { Box, Grid, Button, ResponsiveContext } from 'grommet';
 
 import HeroItem from './HeroItem';
+import LastFight from './LastFight';
 
 
 export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
   const size = useContext(ResponsiveContext);
   const p1 = heros.find(i => i.id === player1);
   const p2 = heros.find(i => i.id === player2);
-  const playerFight = ["first", "second"];
   let goFight = () => {};
   let label = "Select players"
   let disabled = true;
-  let lastFight = "";
-  let winner = "";
   if(p1 !== undefined && p2 !== undefined) {
     label = `${p1.name} vs ${p2.name}`;
     goFight = fight;
     disabled = false;
-  }
-  if(last !== null) {
-    winner = last[playerFight[last.winner-1]] === undefined
-      ? "Tie"
-      : last[playerFight[last.winner-1]].name
-    lastFight = `${last.first.name} vs ${last.second.name} => ${winner}`;
   }
   return (
     <Box margin="small">
@@ -32,13 +24,10 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
         onClick={goFight}
         label={label}
         disabled={disabled}
+        focusIndicator={false}
       >
       </Button>
-      <Box margin="medium">
-        <Text textAlign="center">
-        Last Fight: { lastFight }
-        </Text>
-      </Box>
+      <LastFight last={last} />
       <Grid
         margin="small"
         columns={{

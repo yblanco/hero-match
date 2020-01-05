@@ -18,7 +18,12 @@ export default {
   },
   button: {
     border: {
-     color: "none"
+     color: "none",
+     radius: "none",
+    },
+    padding: {
+      vertical: "1em",
+      horizontal: "1em",
     },
   },
 };

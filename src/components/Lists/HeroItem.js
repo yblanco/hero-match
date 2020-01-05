@@ -21,7 +21,7 @@ export default ({ hero, player1=0, player2=0, selectPlayer=()=>{} }) => {
       fill="vertical"
     >
       <Image
-        fit="contain"
+        fit="cover"
         fill
         src={hero.image.url}
       />
