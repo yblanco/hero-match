@@ -3,21 +3,27 @@ import { Box, Grid, Button, Text, ResponsiveContext } from 'grommet';
 
 import HeroItem from './HeroItem';
 
-import './List.css';
-import './ListHero.css';
-
 
 export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
   const size = useContext(ResponsiveContext);
   const p1 = heros.find(i => i.id === player1);
   const p2 = heros.find(i => i.id === player2);
+  const playerFight = ["first", "second"];
   let goFight = () => {};
   let label = "Select players"
   let disabled = true;
+  let lastFight = "";
+  let winner = "";
   if(p1 !== undefined && p2 !== undefined) {
     label = `${p1.name} vs ${p2.name}`;
     goFight = fight;
     disabled = false;
+  }
+  if(last !== null) {
+    winner = last[playerFight[last.winner-1]] === undefined
+      ? "Tie"
+      : last[playerFight[last.winner-1]].name
+    lastFight = `${last.first.name} vs ${last.second.name} => ${winner}`;
   }
   return (
     <Box margin="small">
@@ -28,6 +34,11 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
         disabled={disabled}
       >
       </Button>
+      <Box margin="medium">
+        <Text textAlign="center">
+        Last Fight: { lastFight }
+        </Text>
+      </Box>
       <Grid
         margin="small"
         columns={{
@@ -53,46 +64,3 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
     </Box>
   )
 };
-
-
-/*
-<div className={`listInfo ${player1 !== 0 && player2 !== 0 ? 'ready' : 'not-ready'}`}>
-  {
-    player1 !== 0 && player2 !== 0
-    ? `${heros.find(i => i.id === player1).name} vs ${heros.find(i => i.id === player2).name}`
-    : `Select players`
-  }
-</div>
-<div style={{ textAlign: "right"}}>
-  <div style={{ textAlign: "left",padding: "0 1em" }}>
-    <u>Last Fight</u>{': '}
-    {
-      last !== null
-      && (
-        <span>
-        <i>{last.first.name}</i> vs <i>{last.second.name}</i>
-        {' => '}
-          <strong>
-            {
-              last.winner !== 0
-                && <u>{ last.winner === 1 ? last.first.name : last.second.name }</u>
-            }
-            { last.winner === 0 && "Tie"}
-          </strong>
-        </span>
-      )
-    }
-  </div>
-  <button
-    style={{ padding: "2em", width: "25%" }}
-    disabled={player1===0 || player2===0}
-    onClick={() => { player1 > 0 && player2 > 0 && fight() }}
-  >
-    Fight
-  </button>
-</div>
-
-
-
-
-*/

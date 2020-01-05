@@ -6,10 +6,6 @@ import {
 } from 'grommet';
 
 
-import './List.css';
-import './ListHero.css';
-
-
 export default ({ hero, player1=0, player2=0, selectPlayer=()=>{} }) => {
   let bg = "";
   if(hero.id === player1) {
@@ -22,6 +18,7 @@ export default ({ hero, player1=0, player2=0, selectPlayer=()=>{} }) => {
       border
       onClick={() => {selectPlayer(hero.id)}}
       background={bg}
+      fill="vertical"
     >
       <Image
         fit="contain"
