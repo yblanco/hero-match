@@ -1,20 +1,12 @@
 import React, { useContext } from 'react'
 import { Box, Grid, Text, ResponsiveContext } from 'grommet';
 
-import HeroItem from './HeroItem';
+import LastFightItem from './LastFightItem';
 
 export default ({ fight }) => {
   const size = useContext(ResponsiveContext);
   const vs = size === "small" ? 'xxsmall' : 'xsmall';
-  let first = "tie";
-  let second = "tie";
-  if(fight.winner === 1) {
-    first = "win";
-    second = "lose";
-  } else if(fight.winner === 2) {
-    first = "lose";
-    second = "win";
-  }
+  const { first, second, winner } = fight;
   return (
     <Grid
       key={`${fight.first.id}_${fight.second.id}`}
@@ -23,18 +15,18 @@ export default ({ fight }) => {
       fill
       margin={{ vertical: "small"}}
     >
-      <Box background={first}>
-        <HeroItem hero={fight.first} />
+      <Box border={{ color: "grey", side: "bottom"}}>
+        <LastFightItem hero={first} winner={winner === 0 ? null : winner === 1} reverse={true} />
       </Box>
       <Box alignSelf="center" align="center" >
         <Text>
           VS
         </Text>
       </Box>
-      <Box background={second}>
-        <HeroItem hero={fight.second} />
+      <Box border={{ color: "grey", side: "bottom"}}>
+        <LastFightItem hero={second} winner={winner === 0 ? null : winner === 2} />
       </Box>
-      </Grid>
+    </Grid>
   )
 };
 /*

@@ -29,11 +29,11 @@ export default ({ last }) => {
       <Box alignSelf="center" align="center" >
         <Text size="large">Last Fight:</Text>
       </Box>
-      <LastFightItem hero={first} winner={winner === 1} reverse={true} />
+        <LastFightItem hero={first} winner={winner === 0 ? null : winner === 1} reverse={true} />
       <Box alignSelf="center" align="center" >
         {vs}
       </Box>
-      <LastFightItem hero={second} winner={winner === 2} />
+        <LastFightItem hero={second} winner={winner === 0 ? null : winner === 2} />
     </Grid>
   )
 }
