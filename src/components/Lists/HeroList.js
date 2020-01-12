@@ -35,6 +35,7 @@ export default ({ heros, player1, player2, selectPlayer, fight, last }) => {
           size: "auto"
         }}
         gap="small"
+        rows="small"
       >
         {
           heros.map(hero => {
